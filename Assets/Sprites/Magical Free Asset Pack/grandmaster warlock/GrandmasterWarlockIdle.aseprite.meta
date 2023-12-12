@@ -1,0 +1,388 @@
+fileFormatVersion: 2
+guid: 3c75f01b192a60a4fa25b99ebdff75dd
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: GrandmasterWarlockIdle_Frame_0
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 24
+      height: 32
+    spriteID: 8e38d947d9567fe4ca8b564d5daa461c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: GrandmasterWarlockIdle_Frame_1
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 84
+      width: 24
+      height: 31
+    spriteID: b3bac7992010245468b1fbdf501b4067
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 84}
+  - name: GrandmasterWarlockIdle_Frame_2
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 44
+      width: 24
+      height: 32
+    spriteID: 29f7148c451472546a345fdaf7005a06
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 44}
+  - name: GrandmasterWarlockIdle_Frame_3
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 4
+      width: 24
+      height: 31
+    spriteID: 5267de93147507b499c348fb0409480d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 4}
+  - name: GrandmasterWarlockIdle_Frame_4
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 84
+      width: 24
+      height: 32
+    spriteID: f827f871ddda00243a49ada44085f298
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 84}
+  - name: GrandmasterWarlockIdle_Frame_5
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 43
+      width: 24
+      height: 31
+    spriteID: 649c730d6fba5c844916d4e5086d0993
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 43}
+  - name: GrandmasterWarlockIdle_Frame_6
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 82
+      width: 24
+      height: 31
+    spriteID: 40caed19c59cd444bac9dff02fc692cb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 82}
+  - name: GrandmasterWarlockIdle_Frame_7
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 4
+      width: 24
+      height: 32
+    spriteID: 72d484e578764404bad1f3f286b97b45
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 4}
+  - name: GrandmasterWarlockIdle_Frame_8
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 44
+      width: 24
+      height: 32
+    spriteID: cdde57604ba83be448c92cb021450c9c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 44}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -78852047
+    name: GrandmasterWarlockIdle
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: GrandmasterWarlockIdle_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 5
+        y: 0
+        width: 24
+        height: 32
+      spriteId: 8e38d947d9567fe4ca8b564d5daa461c
+    - name: GrandmasterWarlockIdle_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 5
+        y: 0
+        width: 24
+        height: 31
+      spriteId: b3bac7992010245468b1fbdf501b4067
+    - name: GrandmasterWarlockIdle_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 5
+        y: 0
+        width: 24
+        height: 32
+      spriteId: 29f7148c451472546a345fdaf7005a06
+    - name: GrandmasterWarlockIdle_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 5
+        y: 0
+        width: 24
+        height: 31
+      spriteId: 5267de93147507b499c348fb0409480d
+    - name: GrandmasterWarlockIdle_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 5
+        y: 0
+        width: 24
+        height: 32
+      spriteId: f827f871ddda00243a49ada44085f298
+    - name: GrandmasterWarlockIdle_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 5
+        y: 0
+        width: 24
+        height: 31
+      spriteId: 649c730d6fba5c844916d4e5086d0993
+    - name: GrandmasterWarlockIdle_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 5
+        y: 0
+        width: 24
+        height: 31
+      spriteId: 40caed19c59cd444bac9dff02fc692cb
+    - name: GrandmasterWarlockIdle_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 5
+        y: 0
+        width: 24
+        height: 32
+      spriteId: 72d484e578764404bad1f3f286b97b45
+    - name: GrandmasterWarlockIdle_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 5
+        y: 0
+        width: 24
+        height: 32
+      spriteId: cdde57604ba83be448c92cb021450c9c
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 32, y: 32}
