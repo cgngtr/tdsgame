@@ -11,6 +11,11 @@ public class EnemyFollowPlayer : MonoBehaviour
     [SerializeField] private float attackCooldown = 1f;
     private bool canAttack = true;
 
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+    }
+
     void Update()
     {
         distanceFromPlayer = Vector2.Distance(player.transform.position, transform.position);

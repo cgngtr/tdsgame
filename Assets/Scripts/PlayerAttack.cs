@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -6,7 +7,10 @@ public class PlayerAttack : MonoBehaviour
     public Transform gunAttackPoint;
     private float attackCooldown = 0.5f;
     private float attackTimer;
+    private float attackRange = 10f;
 
+
+    public List<Transform> nearestEnemies = new List<Transform>();
 
     void Start()
     {
@@ -25,12 +29,52 @@ public class PlayerAttack : MonoBehaviour
             attackTimer -= Time.deltaTime;
         }
 
-        if (Attackable())
+        UpdateNearestEnemiesList();
+
+        nearestEnemies.RemoveAll(enemy => enemy == null || IsEnemyDead(enemy));
+
+        if (Attackable() && nearestEnemies.Count > 0)
         {
             Debug.Log("attackTimer = " + attackTimer);
             Shoot();
             attackTimer = attackCooldown;
         }
+    }
+
+    void UpdateNearestEnemiesList()
+    {
+        nearestEnemies.RemoveAll(enemy => enemy == null || Vector3.Distance(transform.position, enemy.position) > attackRange);
+
+        Transform newEnemy = FindNearestEnemy();
+        if (newEnemy != null && !nearestEnemies.Contains(newEnemy))
+        {
+            nearestEnemies.Add(newEnemy);
+        }
+    }
+
+    public Transform FindNearestEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if (enemies.Length == 0)
+        {
+            return null;
+        }
+
+        Transform nearestEnemy = enemies[0].transform;
+        float closestDistance = Vector3.Distance(transform.position, nearestEnemy.position);
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distance = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                nearestEnemy = enemy.transform;
+            }
+        }
+
+        return nearestEnemy;
     }
 
     public void Shoot()
@@ -42,5 +86,13 @@ public class PlayerAttack : MonoBehaviour
     public bool Attackable()
     {
         return attackTimer <= 0;
+    }
+
+
+    private bool IsEnemyDead(Transform enemyTransform)
+    {
+        EnemyHealth enemyHealth = enemyTransform.GetComponent<EnemyHealth>();
+
+        return enemyHealth != null && enemyHealth.enemyHealth <= 0;
     }
 }

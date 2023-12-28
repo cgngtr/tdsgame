@@ -22,7 +22,18 @@ public class EnemyHealth : MonoBehaviour
 
     public void DealDamage(int damage)
     {
+        Debug.Log("a");
         enemyHealth -= damage;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Debug.Log("Damage dealt.");
+            DealDamage(1);
+            
+        }
     }
 
 }
