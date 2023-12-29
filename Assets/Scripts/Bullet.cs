@@ -6,15 +6,16 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
     [SerializeField] private float rotationSpeed = 5f;
-    [SerializeField] private float lifeTime = 1f;
+    //[SerializeField] private float lifeTime = 0.5f;
 
     private PlayerAttack _playerAttack;
     private Transform currentTarget;
+    
 
     void Start()
     {
         _playerAttack = GameObject.Find("Player").GetComponent<PlayerAttack>();
-        Destroy(gameObject, lifeTime);
+        //Destroy(gameObject, lifeTime);
     }
 
     void Update()
@@ -43,11 +44,4 @@ public class Bullet : MonoBehaviour
         return enemyHealth != null && enemyHealth.enemyHealth > 0;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(gameObject);
-        }
-    }
 }

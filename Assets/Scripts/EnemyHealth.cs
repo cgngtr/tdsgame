@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [SerializeField] private PlayerExperience _PlayerExperience;
     public int enemyHealth;
+    public static Object[] objects;
+
     void Start()
     {
+        _PlayerExperience = GameObject.Find("Player").GetComponent<PlayerExperience>();
         enemyHealth = 5;
     }
 
     void Update()
     {
-        Debug.Log(enemyHealth);
         if(enemyHealth <= 0)
         {
             Destroy(this.gameObject);
             Debug.Log("Dead");
+            _PlayerExperience.GainExperience(40);
         }
     }
 
@@ -32,8 +36,8 @@ public class EnemyHealth : MonoBehaviour
         {
             Debug.Log("Damage dealt.");
             DealDamage(1);
-            
+            collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
         }
     }
-
 }

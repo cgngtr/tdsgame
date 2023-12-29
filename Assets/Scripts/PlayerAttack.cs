@@ -3,12 +3,14 @@ using System.Collections.Generic;
 
 public class PlayerAttack : MonoBehaviour
 {
+
+    
     public GameObject bulletPrefab;
+    public GameObject gun;
     public Transform gunAttackPoint;
     private float attackCooldown = 0.5f;
     private float attackTimer;
     private float attackRange = 10f;
-
 
     public List<Transform> nearestEnemies = new List<Transform>();
 
@@ -35,9 +37,16 @@ public class PlayerAttack : MonoBehaviour
 
         if (Attackable() && nearestEnemies.Count > 0)
         {
-            Debug.Log("attackTimer = " + attackTimer);
             Shoot();
             attackTimer = attackCooldown;
+        }
+
+        Transform nearestEnemy = FindNearestEnemy();
+        if (nearestEnemy != null)
+        {
+            Vector3 directionToEnemy = nearestEnemy.position - transform.position;
+            float angle = Mathf.Atan2(directionToEnemy.y, directionToEnemy.x) * Mathf.Rad2Deg;
+            gun.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 
@@ -62,6 +71,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         Transform nearestEnemy = enemies[0].transform;
+
         float closestDistance = Vector3.Distance(transform.position, nearestEnemy.position);
 
         foreach (GameObject enemy in enemies)
@@ -79,7 +89,6 @@ public class PlayerAttack : MonoBehaviour
 
     public void Shoot()
     {
-        Debug.Log("Shot");
         Instantiate(bulletPrefab, gunAttackPoint.position, Quaternion.identity);
     }
 
@@ -88,11 +97,9 @@ public class PlayerAttack : MonoBehaviour
         return attackTimer <= 0;
     }
 
-
     private bool IsEnemyDead(Transform enemyTransform)
     {
         EnemyHealth enemyHealth = enemyTransform.GetComponent<EnemyHealth>();
-
         return enemyHealth != null && enemyHealth.enemyHealth <= 0;
     }
 }
