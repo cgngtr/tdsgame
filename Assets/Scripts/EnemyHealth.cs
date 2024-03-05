@@ -25,7 +25,6 @@ public class EnemyHealth : MonoBehaviour
 
     public void DealDamage(int damage)
     {
-        Debug.Log("a");
         if (enemyHealth <= 1)
         {
             enemyHealth -= damage;
@@ -52,7 +51,7 @@ public class EnemyHealth : MonoBehaviour
     public IEnumerator DieCoroutine()
     {
         _EnemySpawner.enemiesList.Remove(gameObject);
-        Debug.Log("Dead");
+        Debug.Log(Time.timeScale);
         _PlayerExperience.GainExperience(40);
         yield return null;
         Destroy(gameObject);

@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public List<GameObject> enemies;
     public int round = 0;
+    public bool isGamePaused = false;
 
     void Start()
     {
@@ -18,6 +19,18 @@ public class GameManager : MonoBehaviour
         if (enemies.Count <= 0)
         {
         }
+
+        if (isGamePaused)
+        {
+            Time.timeScale = 0f;
+            // Other systems to shut-down.
+            Debug.Log("Game is paused.");
+
+            return;
+        }
+
+        Time.timeScale = 1f;
+
     }
 
     public void AddEnemyToList(GameObject enemy)
