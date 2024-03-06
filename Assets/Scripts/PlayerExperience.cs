@@ -22,7 +22,7 @@ public class PlayerExperience : MonoBehaviour
     void Start()
     {
         upgradeUI = GameObject.Find("Level UP UI");
-        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         if (upgradeUI != null)
         {
             upgradeUI.SetActive(false);
@@ -69,6 +69,7 @@ public class PlayerExperience : MonoBehaviour
         upgradeUI.SetActive(true);
         Time.timeScale = 0f;
         _gameManager.isGamePaused = true;
+        
     }
 
     public List<UpgradeData> GetUpgrades(int count)

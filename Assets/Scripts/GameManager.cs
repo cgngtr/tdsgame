@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(StartRound());
-
     }
 
     void Update()
@@ -23,15 +22,15 @@ public class GameManager : MonoBehaviour
         if (isGamePaused)
         {
             Time.timeScale = 0f;
-            // Other systems to shut-down.
-            Debug.Log("Game is paused.");
-
-            return;
+        }
+        else
+        {
+            Time.timeScale = 1f;
         }
 
-        Time.timeScale = 1f;
 
     }
+        
 
     public void AddEnemyToList(GameObject enemy)
     {

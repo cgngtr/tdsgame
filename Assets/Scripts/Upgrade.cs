@@ -12,11 +12,12 @@ public class Upgrade : MonoBehaviour
     [SerializeField] private Button option3;
     [SerializeField] private Button option4;
     public int selectedOption;
+    public bool upgradeSelected;
     public GameManager _gameManager;
 
     void Start()
     {
-        upgradeUI = GameObject.Find("Level UP UI");
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         option1.onClick.AddListener(() => OnOptionClick(1));
         option2.onClick.AddListener(() => OnOptionClick(2));
         option3.onClick.AddListener(() => OnOptionClick(3));
@@ -36,11 +37,11 @@ public class Upgrade : MonoBehaviour
 
     public void SelectUpgrade()
     {
+        upgradeSelected = true;
         Debug.Log("Upgrade you chose: " + selectedOption);
-        upgradeUI.SetActive(false);
+        _playerExperience.upgradeUI.SetActive(false);
         Time.timeScale = 1f;
         _gameManager.isGamePaused = false;
-
+        Debug.Log(_gameManager.isGamePaused);
     }
-
 }
