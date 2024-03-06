@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -11,11 +12,13 @@ public class PlayerAttack : MonoBehaviour
     private float attackCooldown = 0.5f;
     private float attackTimer;
     private float attackRange = 10f;
+    public Animator anim;
 
     public List<Transform> nearestEnemies = new List<Transform>();
 
     void Start()
     {
+        anim = GameObject.Find("Gun").GetComponent<Animator>();
         gunAttackPoint = GameObject.Find("GunAttackPoint").GetComponent<Transform>();
 
         if (bulletPrefab == null || gunAttackPoint == null)
@@ -39,6 +42,7 @@ public class PlayerAttack : MonoBehaviour
         {
             Shoot();
             attackTimer = attackCooldown;
+
         }
 
         Transform nearestEnemy = FindNearestEnemy();
@@ -87,10 +91,13 @@ public class PlayerAttack : MonoBehaviour
         return nearestEnemy;
     }
 
+
     public void Shoot()
     {
         Instantiate(bulletPrefab, gunAttackPoint.position, Quaternion.identity);
+        anim.SetTrigger("isShooting");
     }
+
 
     public bool Attackable()
     {
