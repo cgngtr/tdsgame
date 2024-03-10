@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        StartCoroutine(Spawn());
+        StartCoroutine(StartSpawning());
     }
 
     void Update()
@@ -45,13 +45,23 @@ public class EnemySpawner : MonoBehaviour
         //timerText.text = timerString;
     }
 
-
-    IEnumerator Spawn()
+    IEnumerator StartSpawning()
     {
-        yield return new WaitForSeconds(2f);
-        for (int i = 0; i < enemiesPerWave; i++)
+        while (true)
         {
-            GameObject enemy = Instantiate(enemyPrefab[0], GetRandomSpawnPosition(), Quaternion.identity);
+            yield return StartCoroutine(Spawn(enemiesPerWave));
+            yield return new WaitForSeconds(5f);
+        }
+    }
+
+    IEnumerator Spawn(int numberOfEnemies)
+    {
+        int currentRound = _gameManager.round;
+
+        for (int i = 0; i < numberOfEnemies; i++)
+        {
+            print(currentRound);
+            GameObject enemy = Instantiate(enemyPrefab[currentRound], GetRandomSpawnPosition(), Quaternion.identity);
             enemiesList.Add(enemy);
         }
         yield return null;

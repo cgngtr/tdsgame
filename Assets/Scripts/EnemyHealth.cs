@@ -13,6 +13,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Start()
     {
+        _Enemy = GetComponent<Enemy>();
         _PlayerExperience = GameObject.Find("Player").GetComponent<PlayerExperience>();
         _GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _EnemySpawner = GameObject.Find("SpawnManager").GetComponent<EnemySpawner>();

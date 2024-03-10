@@ -195,7 +195,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb78451d7919744f92b283ba38253be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _PlayerExperience: {fileID: 0}
+  _GameManager: {fileID: 0}
+  _EnemySpawner: {fileID: 0}
+  _Enemy: {fileID: 0}
   enemyHealth: 5
+  playerDamage: 1
 --- !u!50 &7730467498639433844
 Rigidbody2D:
   serializedVersion: 4

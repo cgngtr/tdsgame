@@ -78,8 +78,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Enemy: {fileID: 11400000, guid: b6efd54b8d4141644a23453326313ef2, type: 2}
-  _gameManager: {fileID: 0}
-  _enemySpawner: {fileID: 0}
-  _enemyHealth: {fileID: 0}
+  _gameManager: {fileID: 2716750272942858776, guid: 7b1e1bfc28a4ea9499c4c0e2a8db731c, type: 3}
+  _enemySpawner: {fileID: 1279760882544138438, guid: 2b1bf5db7e6d3fc4e83bf17cc3390d5b, type: 3}
+  _enemyHealth: {fileID: 4628903247948909641, guid: 961ced6266a17fb4d9ead00e76cfb9e5, type: 3}
   spawnable: 0
   multiplier: 0
