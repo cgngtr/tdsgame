@@ -1,67 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+
+
+// Bir timer olacak, timer bitene kadar dusmanlar spawnlanmaya devam edecek.
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab; // Assign your enemy prefab in the Inspector
-    public int numberOfWaves = 5;
-    public int enemiesPerWave = 5;
-    public float timeBetweenWaves = 3f;
+    public GameObject[] enemyPrefab;
+    public GameManager _gameManager;
+
+    public float roundTime = 30f;
+    private Text timerText;
 
     public List<GameObject> enemiesList = new List<GameObject>();
-    private int currentWave = 0;
-    private bool isWaveInProgress = false;
+    public int enemiesPerWave = 5;
 
     void Start()
     {
-        StartNextWave();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        StartCoroutine(Spawn());
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Check if all enemies in the current wave are destroyed and if the wave is not in progress
-        if (enemiesList.Count == 0 && !isWaveInProgress)
+        if (roundTime > 0)
         {
-            if (currentWave < numberOfWaves)
-            {
-                StartCoroutine(StartNextWaveDelay());
-            }
-            else
-            {
-                Debug.Log("All waves completed!");
-            }
+            roundTime -= Time.deltaTime;
+            UpdateTimerText();
+        }
+        else
+        {
+            Debug.Log("Round bitti!");
         }
     }
 
-    IEnumerator StartNextWaveDelay()
+    void UpdateTimerText()
     {
-        isWaveInProgress = true; // Set the flag to indicate that the next wave is starting
-        yield return new WaitForSeconds(timeBetweenWaves);
-        StartNextWave();
-        isWaveInProgress = false; // Reset the flag when the wave starts
+        int minutes = Mathf.FloorToInt(roundTime / 60f);
+        int seconds = Mathf.FloorToInt(roundTime % 60f);
+        string timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
+        //timerText.text = timerString;
     }
 
-    void StartNextWave()
-    {
-        currentWave++;
-        Debug.Log("Wave " + currentWave);
 
-        // Spawn enemies for the current wave
+    IEnumerator Spawn()
+    {
+        yield return new WaitForSeconds(2f);
         for (int i = 0; i < enemiesPerWave; i++)
         {
-            GameObject enemy = Instantiate(enemyPrefab, GetRandomSpawnPosition(), Quaternion.identity);
+            GameObject enemy = Instantiate(enemyPrefab[0], GetRandomSpawnPosition(), Quaternion.identity);
             enemiesList.Add(enemy);
         }
+        yield return null;
     }
 
     Vector3 GetRandomSpawnPosition()
     {
         // Implement your own logic to get a random spawn position
         // This can be within a specific range or based on predefined spawn points
-        float x = Random.Range(-10f, 10f);
-        float y = Random.Range(-5f, 5f);
+        float x = Random.Range(-7f, 7f);
+        float y = Random.Range(-3f, 3f);
         return new Vector3(x, y, 0f);
     }
 
@@ -69,4 +70,11 @@ public class EnemySpawner : MonoBehaviour
     {
         enemiesList.Remove(enemy);
     }
+    //IEnumerator StartNextWaveDelay()
+    //{
+    //    isWaveInProgress = true; // Set the flag to indicate that the next wave is starting
+    //    yield return new WaitForSeconds(timeBetweenWaves);
+    //    StartNextWave();
+    //    isWaveInProgress = false; // Reset the flag when the wave starts
+    //}
 }

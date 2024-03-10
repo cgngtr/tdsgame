@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.346, y: -1.784, z: -0.01}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1682808504324887281}
@@ -51,7 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 205e7f359c743474583126335a77a1db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 150
+  moveSpeed: 200
+  anim: {fileID: 0}
 --- !u!212 &408004401322980499
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -93,8 +94,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.37254903, g: 0.8039216, b: 0.89411765, a: 1}
+  m_Sprite: {fileID: 269220480, guid: 8a53c2324d573fe43840643f9c87f8fc, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -163,18 +164,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.09053737}
+  m_Offset: {x: -0.000000059604645, y: -0.15514588}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 1.5}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6318152, y: 0.69217336}
+  m_Size: {x: 0.51931655, y: 1.0648735}
   m_EdgeRadius: 0
 --- !u!95 &3010258909090917887
 Animator:
@@ -212,6 +213,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7027838162390373396, guid: 41148a00aa32a5a4eb81383ff6721c5c, type: 3}
   gun: {fileID: 8684958573046419316}
   gunAttackPoint: {fileID: 5464245954066675086}
+  anim: {fileID: 0}
   nearestEnemies: []
 --- !u!114 &7688915907656536859
 MonoBehaviour:
@@ -228,6 +230,10 @@ MonoBehaviour:
   currentExperience: 0
   currentLevel: 1
   experienceToLevelUp: 50
+  upgrades: []
+  isLeveledUp: 0
+  upgradeUI: {fileID: 0}
+  _gameManager: {fileID: 0}
 --- !u!1 &5685855901137041895
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +259,7 @@ Transform:
   m_GameObject: {fileID: 5685855901137041895}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0998, y: 0, z: 0}
+  m_LocalPosition: {x: 0.137, y: -0.006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -269,6 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1682808504324887281}
   - component: {fileID: 8417815725602432716}
+  - component: {fileID: 8107391565459488257}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -284,9 +291,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8684958573046419316}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.621, y: 0.749, z: 0.01}
-  m_LocalScale: {x: 3.87, y: 3.87, z: 58.05}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6, y: 0.181, z: 0.01}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 11.25}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5464245954066675086}
@@ -332,8 +339,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 742338272941956005, guid: b2bd73fa82b1f1147accc3672ae0f018, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -652188665, guid: 4dd0a2a862976c34ca38263fa3360795, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -344,3 +351,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8107391565459488257
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684958573046419316}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 99e0b4189de8ee74cbbee3784e56bddc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
