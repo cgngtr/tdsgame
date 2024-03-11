@@ -13,11 +13,11 @@ public class EnemyHealth : MonoBehaviour
 
     void Start()
     {
-        _Enemy = GetComponent<Enemy>();
         _PlayerExperience = GameObject.Find("Player").GetComponent<PlayerExperience>();
         _GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _EnemySpawner = GameObject.Find("SpawnManager").GetComponent<EnemySpawner>();
 
+        _Enemy = GetComponent<Enemy>();
         enemyHealth = _Enemy.Health;
     }
 
@@ -45,7 +45,7 @@ public class EnemyHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             DealDamage(playerDamage);
-            Debug.Log("Damage dealt.");
+            Debug.Log(playerDamage + " damage dealt.");
             collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
         }

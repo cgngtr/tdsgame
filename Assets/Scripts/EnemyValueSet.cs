@@ -18,8 +18,6 @@ public class EnemyValueSet : MonoBehaviour
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _enemySpawner = GameObject.Find("SpawnManager").GetComponent<EnemySpawner>();
-        _enemyHealth = GameObject.Find("Enemy1").GetComponent<EnemyHealth>();
-
     }
 
     void Update()
