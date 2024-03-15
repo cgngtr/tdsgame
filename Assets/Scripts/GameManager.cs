@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public List<GameObject> enemies;
     public int round = 0;
     public bool isGamePaused = false;
+    public float timer = 30f;
+    public EnemySpawner _enemySpawner;
 
     void Start()
     {
-        StartCoroutine(StartRound());
+        _enemySpawner = GameObject.Find("SpawnManager").GetComponent<EnemySpawner>();
     }
-
+    
     void Update()
     {
         if (enemies.Count <= 0)
@@ -27,8 +30,13 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
+        timer -= Time.deltaTime;
+        if(timer  < 0f) 
+        {
+            round++;
+            SceneManager.LoadScene(1);
 
-
+        }
     }
         
 
@@ -49,19 +57,5 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning("Attempted to remove an enemy that was not in the list.");
         }
-    }
-
-    public bool RoundStarting()
-    {
-        return true;
-    }
-    private IEnumerator StartRound()
-    {
-        yield return new WaitForSeconds(3f);
-        round++;
-        Debug.Log(round);
-        RoundStarting();
-        yield return new WaitUntil(() => enemies.Count <= 0);
-        StartCoroutine(StartRound());
     }
 }

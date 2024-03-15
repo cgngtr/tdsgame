@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private EnemySpawner _EnemySpawner;
     [SerializeField] private Enemy _Enemy;
     public int enemyHealth;
-    public int playerDamage = 1;
+    public int playerDamage = 3;
 
     void Start()
     {
@@ -17,7 +17,6 @@ public class EnemyHealth : MonoBehaviour
         _GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _EnemySpawner = GameObject.Find("SpawnManager").GetComponent<EnemySpawner>();
 
-        _Enemy = GetComponent<Enemy>();
         enemyHealth = _Enemy.Health;
     }
 

@@ -40,9 +40,7 @@ public class EnemyFollowPlayer : MonoBehaviour
     private IEnumerator AttackWithCooldown()
     {
         canAttack = false;
-        Debug.Log("Hit");
         yield return new WaitForSeconds(attackCooldown);
-
         canAttack = true;
     }
 

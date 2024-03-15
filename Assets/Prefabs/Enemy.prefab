@@ -199,8 +199,8 @@ MonoBehaviour:
   _GameManager: {fileID: 0}
   _EnemySpawner: {fileID: 0}
   _Enemy: {fileID: 0}
-  enemyHealth: 5
-  playerDamage: 1
+  enemyHealth: 0
+  playerDamage: 3
 --- !u!50 &7730467498639433844
 Rigidbody2D:
   serializedVersion: 4

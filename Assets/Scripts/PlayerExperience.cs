@@ -42,7 +42,6 @@ public class PlayerExperience : MonoBehaviour
     {
         currentExperience += amount;
         CheckLevelUp();
-        Debug.Log($"EXP : {currentExperience}");
     }
 
     public void CheckLevelUp()
@@ -64,7 +63,6 @@ public class PlayerExperience : MonoBehaviour
         currentLevel++;
         currentExperience -= experienceToLevelUp;
         experienceToLevelUp += 50;
-        Debug.Log($"Leveled up! You're now level {currentLevel}");
         isLeveledUp = false;
         upgradeUI.SetActive(true);
         Time.timeScale = 0f;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,12 +14,14 @@ public class EnemySpawner : MonoBehaviour
     public GameManager _gameManager;
 
     public float roundTime = 30f;
-    private Text timerText;
+    public TextMeshProUGUI timerText;
+    public string timerString;
 
     public List<GameObject> enemiesList = new List<GameObject>();
     public int enemiesPerWave = 5;
-
+    public int enemiesPerSpawn = 5;
     private int currentEnemyIndex = 0;
+
 
 
     void Start()
@@ -44,27 +47,31 @@ public class EnemySpawner : MonoBehaviour
     {
         int minutes = Mathf.FloorToInt(roundTime / 60f);
         int seconds = Mathf.FloorToInt(roundTime % 60f);
-        string timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
-        //timerText.text = timerString;
+        timerString = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerText.text = timerString;
     }
 
     IEnumerator StartSpawning()
     {
         while (true)
         {
-            StartCoroutine(Spawn(enemiesPerWave, _gameManager.round));
-            _gameManager.round++;
-            yield return new WaitForSeconds(10f);
+            yield return StartCoroutine(Spawn(enemiesPerSpawn));
+            yield return new WaitForSeconds(5f);
         }
     }
 
-    IEnumerator Spawn(int numberOfEnemies, int round)
+    IEnumerator Spawn(int numberOfEnemies)
     {
         for (int i = 0; i < numberOfEnemies; i++)
         {
+            int spawnAmount = 0;
             GameObject enemy = Instantiate(enemyPrefab[currentEnemyIndex], GetRandomSpawnPosition(), Quaternion.identity);
             enemiesList.Add(enemy);
+            spawnAmount++;
+            // 14'e kadar devam etti.
+            Debug.Log("i = " + i + " spawning = " + spawnAmount);
             yield return new WaitForSeconds(0.5f);
+            
         }
 
         currentEnemyIndex++;
