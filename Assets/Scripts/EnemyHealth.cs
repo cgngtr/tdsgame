@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private PlayerExperience _PlayerExperience;
     [SerializeField] private GameManager _GameManager;
     [SerializeField] private EnemySpawner _EnemySpawner;
+    [SerializeField] private PlayerAttack _playerAttack;
     [SerializeField] private Enemy _Enemy;
     public int enemyHealth;
     public int playerDamage = 3;
@@ -16,13 +17,13 @@ public class EnemyHealth : MonoBehaviour
         _PlayerExperience = GameObject.Find("Player").GetComponent<PlayerExperience>();
         _GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _EnemySpawner = GameObject.Find("SpawnManager").GetComponent<EnemySpawner>();
-
+        _playerAttack = GameObject.Find("Player").GetComponent<PlayerAttack>();
         enemyHealth = _Enemy.Health;
     }
 
     void Update()
     {
-        
+
     }
 
     public void DealDamage(int damage)
@@ -35,7 +36,6 @@ public class EnemyHealth : MonoBehaviour
         else
         {
             enemyHealth -= damage;
-
         }
     }
 
@@ -43,8 +43,8 @@ public class EnemyHealth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            DealDamage(playerDamage);
-            Debug.Log(playerDamage + " damage dealt.");
+            DealDamage(_playerAttack.playerDamage);
+            Debug.Log(_playerAttack.playerDamage + " damage dealt.");
             collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
         }

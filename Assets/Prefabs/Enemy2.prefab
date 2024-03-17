@@ -76,6 +76,14 @@ PrefabInstance:
       propertyPath: playerDamage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4630066394931618404, guid: 961ced6266a17fb4d9ead00e76cfb9e5, type: 3}
+      propertyPath: avoidanceForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630066394931618404, guid: 961ced6266a17fb4d9ead00e76cfb9e5, type: 3}
+      propertyPath: avoidanceRadius
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7981405494773764839, guid: 961ced6266a17fb4d9ead00e76cfb9e5, type: 3}
       propertyPath: m_Name
       value: Enemy2
@@ -130,6 +138,8 @@ MonoBehaviour:
   _enemyHealth: {fileID: 4628903247948909641, guid: 961ced6266a17fb4d9ead00e76cfb9e5, type: 3}
   spawnable: 0
   multiplier: 0
+  enemyToSpawn: 0
+  enemySpawnAmount: 0
 --- !u!95 &-8003054105694499018
 Animator:
   serializedVersion: 5

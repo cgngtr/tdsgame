@@ -13,11 +13,13 @@ public class PlayerAttack : MonoBehaviour
     private float attackTimer;
     private float attackRange = 10f;
     public Animator anim;
+    public int playerDamage;
 
     public List<Transform> nearestEnemies = new List<Transform>();
 
     void Start()
     {
+        playerDamage = 5;
         anim = GameObject.Find("Gun").GetComponent<Animator>();
         gunAttackPoint = GameObject.Find("GunAttackPoint").GetComponent<Transform>();
 

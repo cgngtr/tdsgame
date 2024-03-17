@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8856616824488104378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 6762364809914787521}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,7 +45,9 @@ GameObject:
   - component: {fileID: 4630066394931618404}
   - component: {fileID: 4628903247948909641}
   - component: {fileID: 7730467498639433844}
-  m_Layer: 0
+  - component: {fileID: 4347010370758125049}
+  - component: {fileID: 1014273662285934119}
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -62,7 +64,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.01, y: 0.68, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8856616824488104378}
@@ -109,8 +111,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5529412, g: 0.14117648, b: 0.21568628, a: 1}
+  m_Sprite: {fileID: 1713612466, guid: 6d62c876fc532d145b08cf10444fc83e, type: 3}
+  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -149,21 +151,21 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.06180477, y: -0.30464035}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 1.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.6233568, y: 0.64402544}
   m_EdgeRadius: 0
 --- !u!114 &4630066394931618404
 MonoBehaviour:
@@ -183,6 +185,11 @@ MonoBehaviour:
   attackRange: 0.75
   attackPoint: {fileID: 8856616824488104378}
   attackCooldown: 1
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  avoidanceRadius: 1.5
+  avoidanceForce: 2
 --- !u!114 &4628903247948909641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,9 +205,10 @@ MonoBehaviour:
   _PlayerExperience: {fileID: 0}
   _GameManager: {fileID: 0}
   _EnemySpawner: {fileID: 0}
-  _Enemy: {fileID: 0}
-  enemyHealth: 0
-  playerDamage: 3
+  _playerAttack: {fileID: 0}
+  _Enemy: {fileID: 11400000, guid: 015a1c5bca943504c89080a3965624c9, type: 2}
+  enemyHealth: 5
+  playerDamage: 1
 --- !u!50 &7730467498639433844
 Rigidbody2D:
   serializedVersion: 4
@@ -224,7 +232,48 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!95 &4347010370758125049
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7981405494773764839}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 89c48939f3bd659489c087c38a06aa27, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1014273662285934119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7981405494773764839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d22d804c32d15424a92752c46810b22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Enemy: {fileID: 11400000, guid: 015a1c5bca943504c89080a3965624c9, type: 2}
+  _gameManager: {fileID: 2716750272942858776, guid: 7b1e1bfc28a4ea9499c4c0e2a8db731c, type: 3}
+  _enemySpawner: {fileID: 1279760882544138438, guid: 2b1bf5db7e6d3fc4e83bf17cc3390d5b, type: 3}
+  _enemyHealth: {fileID: 4628903247948909641}
+  spawnable: 0
+  multiplier: 0
+  enemyToSpawn: 0
+  enemySpawnAmount: 0

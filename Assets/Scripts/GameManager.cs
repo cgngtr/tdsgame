@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         if(timer  < 0f) 
         {
             round++;
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
 
         }
     }

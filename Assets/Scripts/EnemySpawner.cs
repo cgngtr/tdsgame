@@ -12,20 +12,19 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefab;
     public GameManager _gameManager;
+    public EnemyValueSet _evs;
 
     public float roundTime = 30f;
     public TextMeshProUGUI timerText;
     public string timerString;
 
-    public List<GameObject> enemiesList = new List<GameObject>();
+    public List<GameObject> enemiesList = new();
     public int enemiesPerWave = 5;
     public int enemiesPerSpawn = 5;
-    private int currentEnemyIndex = 0;
-
-
 
     void Start()
     {
+        _evs = GameObject.Find("SpawnManager").GetComponent<EnemyValueSet>();
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         StartCoroutine(StartSpawning());
     }
@@ -55,32 +54,22 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return StartCoroutine(Spawn(enemiesPerSpawn));
+            Debug.Log("Start spawning method is called.");
+            if (_evs == null)
+                Debug.Log("_evs not found.");
+            Debug.Log (_evs.enemySpawnAmount);
+            Debug.Log(_evs.enemyToSpawn);
+            Spawn(_evs.enemyToSpawn,_evs.enemySpawnAmount);
             yield return new WaitForSeconds(5f);
         }
     }
-
-    IEnumerator Spawn(int numberOfEnemies)
+    public void Spawn(int index, int numberOfEnemies)
     {
         for (int i = 0; i < numberOfEnemies; i++)
         {
-            int spawnAmount = 0;
-            GameObject enemy = Instantiate(enemyPrefab[currentEnemyIndex], GetRandomSpawnPosition(), Quaternion.identity);
+            GameObject enemy = Instantiate(enemyPrefab[index], GetRandomSpawnPosition(), Quaternion.identity);
             enemiesList.Add(enemy);
-            spawnAmount++;
-            // 14'e kadar devam etti.
-            Debug.Log("i = " + i + " spawning = " + spawnAmount);
-            yield return new WaitForSeconds(0.5f);
-            
         }
-
-        currentEnemyIndex++;
-        if (currentEnemyIndex >= enemyPrefab.Length)
-        {
-            currentEnemyIndex = 0;
-        }
-
-        yield return null;
     }
 
     Vector3 GetRandomSpawnPosition()

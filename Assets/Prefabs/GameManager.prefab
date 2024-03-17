@@ -47,3 +47,5 @@ MonoBehaviour:
   enemies: []
   round: 0
   isGamePaused: 0
+  timer: 30
+  _enemySpawner: {fileID: 0}
