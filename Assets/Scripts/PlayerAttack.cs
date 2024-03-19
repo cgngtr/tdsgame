@@ -6,22 +6,23 @@ public class PlayerAttack : MonoBehaviour
 {
 
     
+    [SerializeField] private float attackRange = 10f;
     public GameObject bulletPrefab;
     public GameObject gun;
     public Transform gunAttackPoint;
     private float attackCooldown = 0.5f;
     private float attackTimer;
-    private float attackRange = 10f;
     public Animator anim;
     public int playerDamage;
-
-    public List<Transform> nearestEnemies = new List<Transform>();
+    public List<Transform> nearestEnemies = new();
+    public EnemySpawner _enemySpawner;
 
     void Start()
     {
-        playerDamage = 5;
-        anim = GameObject.Find("Gun").GetComponent<Animator>();
+        _enemySpawner = GameObject.Find("SpawnManager").GetComponent<EnemySpawner>();
         gunAttackPoint = GameObject.Find("GunAttackPoint").GetComponent<Transform>();
+        anim = GameObject.Find("Gun").GetComponent<Animator>();
+        playerDamage = 5;
 
         if (bulletPrefab == null || gunAttackPoint == null)
         {
@@ -60,33 +61,35 @@ public class PlayerAttack : MonoBehaviour
     {
         nearestEnemies.RemoveAll(enemy => enemy == null || Vector3.Distance(transform.position, enemy.position) > attackRange);
 
-        Transform newEnemy = FindNearestEnemy();
-        if (newEnemy != null && !nearestEnemies.Contains(newEnemy))
+        foreach (GameObject enemy in _enemySpawner.enemiesList)
         {
-            nearestEnemies.Add(newEnemy);
+            if (enemy != null && !nearestEnemies.Contains(enemy.transform) && Vector3.Distance(transform.position, enemy.transform.position) <= attackRange)
+            {
+                nearestEnemies.Add(enemy.transform);
+            }
         }
     }
 
     public Transform FindNearestEnemy()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        if (enemies.Length == 0)
+        if (_enemySpawner.enemiesList.Count == 0)
         {
             return null;
         }
 
-        Transform nearestEnemy = enemies[0].transform;
+        Transform nearestEnemy = null;
+        float closestDistance = Mathf.Infinity;
 
-        float closestDistance = Vector3.Distance(transform.position, nearestEnemy.position);
-
-        foreach (GameObject enemy in enemies)
+        foreach (GameObject enemyObject in _enemySpawner.enemiesList)
         {
-            float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distance < closestDistance)
+            if (enemyObject != null)
             {
-                closestDistance = distance;
-                nearestEnemy = enemy.transform;
+                float distance = Vector3.Distance(transform.position, enemyObject.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    nearestEnemy = enemyObject.transform;
+                }
             }
         }
 
@@ -94,11 +97,22 @@ public class PlayerAttack : MonoBehaviour
     }
 
 
+
     public void Shoot()
     {
-        Instantiate(bulletPrefab, gunAttackPoint.position, Quaternion.identity);
+        Transform nearestEnemy = FindNearestEnemy();
+        if (nearestEnemy != null)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, gunAttackPoint.position, Quaternion.identity);
+            Bullet bulletComponent = bullet.GetComponent<Bullet>();
+            if (bulletComponent != null)
+            {
+                bulletComponent.SetTarget(nearestEnemy);
+            }
+        }
         anim.SetTrigger("isShooting");
     }
+
 
 
     public bool Attackable()

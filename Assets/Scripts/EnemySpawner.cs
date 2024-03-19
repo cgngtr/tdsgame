@@ -57,8 +57,6 @@ public class EnemySpawner : MonoBehaviour
             Debug.Log("Start spawning method is called.");
             if (_evs == null)
                 Debug.Log("_evs not found.");
-            Debug.Log (_evs.enemySpawnAmount);
-            Debug.Log(_evs.enemyToSpawn);
             Spawn(_evs.enemyToSpawn,_evs.enemySpawnAmount);
             yield return new WaitForSeconds(5f);
         }

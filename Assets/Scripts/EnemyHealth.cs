@@ -44,7 +44,7 @@ public class EnemyHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             DealDamage(_playerAttack.playerDamage);
-            Debug.Log(_playerAttack.playerDamage + " damage dealt.");
+            // Debug.Log(_playerAttack.playerDamage + " damage dealt.");
             collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
         }
@@ -53,7 +53,6 @@ public class EnemyHealth : MonoBehaviour
     public IEnumerator DieCoroutine()
     {
         _EnemySpawner.enemiesList.Remove(gameObject);
-        Debug.Log(Time.timeScale);
         _PlayerExperience.GainExperience(40);
         yield return null;
         Destroy(gameObject);

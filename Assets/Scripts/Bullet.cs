@@ -1,46 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float speed = 2f;
-    //[SerializeField] private float lifeTime = 0.5f;
+    public float speed = 10f;
+    public int damage = 1;
 
-    private PlayerAttack _playerAttack;
-    private Transform currentTarget;
-    
-
-    void Start()
-    {
-        _playerAttack = GameObject.Find("Player").GetComponent<PlayerAttack>();
-        //Destroy(gameObject, lifeTime);
-    }
+    public Transform target;
 
     void Update()
     {
-        if (currentTarget == null || !IsTargetAlive(currentTarget.gameObject))
+        if (target == null)
         {
-            currentTarget = _playerAttack.FindNearestEnemy();
+            Destroy(gameObject);
+            return;
         }
 
-        if (currentTarget != null)
+        Vector3 direction = target.position - transform.position;
+        float distanceThisFrame = speed * Time.deltaTime;
+
+        if (direction.magnitude <= distanceThisFrame)
         {
-            MoveTowardsTarget();
+            HitTarget();
+            return;
         }
+
+        transform.Translate(direction.normalized * distanceThisFrame, Space.World);
     }
 
-    void MoveTowardsTarget()
+    public void SetTarget(Transform newTarget)
     {
-        transform.position = Vector2.MoveTowards(transform.position,
-                                                 currentTarget.position,
-                                                 speed * Time.deltaTime);
+        target = newTarget;
     }
 
-    bool IsTargetAlive(GameObject target)
+    void HitTarget()
     {
-        EnemyHealth enemyHealth = target.GetComponent<EnemyHealth>();
-        return enemyHealth != null && enemyHealth.enemyHealth > 0;
+        Destroy(gameObject);
     }
-
 }
