@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3010258909090917887}
   - component: {fileID: 1528188316684974938}
   - component: {fileID: 7688915907656536859}
+  - component: {fileID: 1337767497613663578}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -210,11 +211,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea05a79e8782754d81306d40b2a9770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRange: 10
   bulletPrefab: {fileID: 7027838162390373396, guid: 41148a00aa32a5a4eb81383ff6721c5c, type: 3}
   gun: {fileID: 8684958573046419316}
   gunAttackPoint: {fileID: 5464245954066675086}
   anim: {fileID: 0}
+  playerDamage: 5
   nearestEnemies: []
+  _enemySpawner: {fileID: 0}
 --- !u!114 &7688915907656536859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +238,18 @@ MonoBehaviour:
   isLeveledUp: 0
   upgradeUI: {fileID: 0}
   _gameManager: {fileID: 0}
+--- !u!114 &1337767497613663578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4098829737642909705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d35d0df68be0fc4c8c726faa8bd2a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5685855901137041895
 GameObject:
   m_ObjectHideFlags: 0

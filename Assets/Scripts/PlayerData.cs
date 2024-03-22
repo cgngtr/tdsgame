@@ -2,17 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerData : MonoBehaviour
+[System.Serializable]
+public class PlayerData
 {
-    // Start is called before the first frame update
-    void Start()
+    PlayerExperience _playerExperience;
+    EnemyValueSet _enemyValueSet;
+    PlayerAttack _playerAttack;
+    public int level;
+    public int damage;
+    public int enemyIndex;
+    public int xp;
+    public PlayerData data;
+
+    public PlayerData()
     {
-        
+        _playerExperience = GameObject.Find("Player").GetComponent<PlayerExperience>();
+        _enemyValueSet = GameObject.Find("SpawnManager").GetComponent<EnemyValueSet>();
+        _playerAttack = GameObject.Find("Player").GetComponent<PlayerAttack>();
+
+        data = new PlayerData(_playerExperience.currentLevel, _playerExperience.currentExperience,
+            _enemyValueSet.enemyToSpawn, _playerAttack.playerDamage);
     }
 
-    // Update is called once per frame
-    void Update()
+    public PlayerData(int level, int damage, int enemyIndex, int xp)
     {
-        
+        this.level = level;
+        this.damage = damage;
+        this.enemyIndex = enemyIndex;
+        this.xp = xp;
     }
 }

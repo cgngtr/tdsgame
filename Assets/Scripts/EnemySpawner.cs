@@ -24,6 +24,8 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
+        _evs.enemyToSpawn = 0;
+        _evs.enemySpawnAmount = 5;
         _evs = GameObject.Find("SpawnManager").GetComponent<EnemyValueSet>();
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         StartCoroutine(StartSpawning());
@@ -61,13 +63,14 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(5f);
         }
     }
-    public void Spawn(int index, int numberOfEnemies)
+    public int Spawn(int index, int numberOfEnemies)
     {
         for (int i = 0; i < numberOfEnemies; i++)
         {
             GameObject enemy = Instantiate(enemyPrefab[index], GetRandomSpawnPosition(), Quaternion.identity);
             enemiesList.Add(enemy);
         }
+        return index;
     }
 
     Vector3 GetRandomSpawnPosition()

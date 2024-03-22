@@ -42,6 +42,5 @@ public class Upgrade : MonoBehaviour
         _playerExperience.upgradeUI.SetActive(false);
         Time.timeScale = 1f;
         _gameManager.isGamePaused = false;
-        Debug.Log(_gameManager.isGamePaused);
     }
 }
