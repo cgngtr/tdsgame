@@ -14,7 +14,7 @@ public class PlayerData
     public int xp;
     public PlayerData data;
 
-    public PlayerData()
+    public void Awake()
     {
         _playerExperience = GameObject.Find("Player").GetComponent<PlayerExperience>();
         _enemyValueSet = GameObject.Find("SpawnManager").GetComponent<EnemyValueSet>();
@@ -22,6 +22,10 @@ public class PlayerData
 
         data = new PlayerData(_playerExperience.currentLevel, _playerExperience.currentExperience,
             _enemyValueSet.enemyToSpawn, _playerAttack.playerDamage);
+    }
+
+    public PlayerData()
+    {
     }
 
     public PlayerData(int level, int damage, int enemyIndex, int xp)

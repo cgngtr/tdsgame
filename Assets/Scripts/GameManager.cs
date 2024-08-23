@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,10 +11,12 @@ public class GameManager : MonoBehaviour
     public bool isGamePaused = false;
     public float timer = 30f;
     public EnemySpawner _enemySpawner;
+    public JsonController _jsonController;
 
     void Start()
     {
         _enemySpawner = GameObject.Find("SpawnManager").GetComponent<EnemySpawner>();
+        _jsonController = GetComponent<JsonController>();
     }
     
     void Update()
@@ -35,7 +38,6 @@ public class GameManager : MonoBehaviour
         {
             round++;
             SceneManager.LoadScene(0);
-
         }
     }
         

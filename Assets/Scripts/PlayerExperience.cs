@@ -8,7 +8,7 @@ public class PlayerExperience : MonoBehaviour
     public int currentExperience;
     public int currentLevel = 1;
     [SerializeField] private int experienceToLevelUp = 50;
-    [SerializeField] private List<UpgradeData> upgrades;
+    [SerializeField] private List<ItemData> items;
     public bool isLeveledUp;
     public GameObject upgradeUI;
     public GameManager _gameManager;
@@ -70,18 +70,18 @@ public class PlayerExperience : MonoBehaviour
         
     }
 
-    public List<UpgradeData> GetUpgrades(int count)
+    public List<ItemData> GetUpgrades(int count)
     {
-        List<UpgradeData> upgradeList = new List<UpgradeData>();
+        List<ItemData> upgradeList = new List<ItemData>();
 
-        if (count > upgrades.Count)
+        if (count > items.Count)
         {
-            count = upgrades.Count;
+            count = items.Count;
         }
 
         for (int i = 0; i < count; i++)
         {
-            upgradeList.Add(upgrades[Random.Range(0, upgrades.Count)]);
+            upgradeList.Add(items[Random.Range(0, items.Count)]);
         }
 
 

@@ -37,6 +37,7 @@ public class Upgrade : MonoBehaviour
 
     public void SelectUpgrade()
     {
+        
         upgradeSelected = true;
         Debug.Log("Upgrade you chose: " + selectedOption);
         _playerExperience.upgradeUI.SetActive(false);
